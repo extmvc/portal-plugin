@@ -1,0 +1,63 @@
+= Ext MVC Portal plugin
+
+From ExtJS Portal demo: http://extjs.com/deploy/dev/examples/portal/portal.html.
+
+== Installation
+1) Copy assets from the plugin's public directory to the application's public directory
+
+2) Add these lines inside the ext-mvc-plugins div to include the js files:
+
+<div id="ext-mvc-plugins-Portal">
+  <script type="text/javascript" src="vendor/plugins/Portal/Portal.js"></script>
+  <script type="text/javascript" src="vendor/plugins/Portal/PortalColumn.js"></script>
+  <script type="text/javascript" src="vendor/plugins/Portal/Portlet.js"></script>
+</div>
+
+== Usage
+
+Uses a column layout internally so set one up like this:
+
+new Ext.Panel({
+  title:  'Dashboard',
+  layout: 'fit',
+  items:  [
+    {
+      xtype:      'portal',
+      autoScroll: true,
+      defaults:   {
+        style: 'padding: 5px 5px 10px 5px',
+        columnWidth: 0.5,
+        
+        //defaults applied to portlets
+        defaults: {
+          bodyStyle: 'padding: 5px'
+        }
+      },
+      
+      items: [
+        {
+          items: [
+            {
+              title:    'Recent Changes',
+              autoLoad: '/changelog'
+            },
+            {
+              title: 'Reports',
+              html:  'Nothing yet'
+            }
+          ]
+        },
+        {
+          items: [
+            {
+              title:    'Statistics',
+              autoLoad: '/statistics'
+            }
+          ]
+        }
+      ]
+    }
+  ]  
+});
+
+Author: Ed Spencer
